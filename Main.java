@@ -30,15 +30,23 @@ public class Main {
         System.out.println("Books Borrowed:");
         if(U.borrowed.isEmpty())  System.out.println("-");
         else U.borrowed.forEach(i -> System.out.println("--" + i.name));
-        int choice = Sc.nextInt();
-        switch(choice) {
-            case 1: U.borrowBook(B); break;
-            case 2: U.returnBook(B); break;
-            case 3: B.displayBooks(); break; // Make this displayBookStatus
-            case 4: login(); break;
-            default: System.out.println("Invalid Input");
+        try {
+            int choice = Sc.nextInt();
+            switch(choice) {
+                case 1: U.borrowBook(B); break;
+                case 2: U.returnBook(B); break;
+                case 3: B.displayBooks(); break; // Make this displayBookStatus
+                case 4: login(); break;
+                default: System.out.println("Invalid Input");
+            }
         }
-        homepage(U);
+        catch(InputMismatchException e) {
+            System.out.println("Enter a number please");
+            Sc.nextLine();
+        }
+        finally{
+            homepage(U);
+        }      
     }
 
     public static void main(String args[]) {

@@ -8,7 +8,9 @@ public class User {
         this.name = name;
     }
     void borrowBook(BookList B) {
-        ArrayList<Book> B1 = B.avaBooks();
+        System.out.println("Which type of book are you looking for?\n1.Textbook\n2.Novel\n3.Magazine\n4.View all");
+        int n = Sc.nextInt();
+        ArrayList<Book> B1 = B.avaBooks(n);
         if(B1.size()==0) {
             System.out.println("No avaiable books");
             return;
