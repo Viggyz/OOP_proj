@@ -9,7 +9,6 @@ public class Main {
         System.out.println("Enter your name:");
         name = Sc.next();
         if(Users.stream().anyMatch(i -> i.name.equals(name))) {
-            System.out.println(Users + " " + name);
             for( User U2: Users) {
                 if(U2.name.equals(name)) {
                     System.out.println("Welcome " + name);
