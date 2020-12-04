@@ -24,7 +24,7 @@ public class User {
             int choice = Sc.nextInt();
             B1.get(choice-1).borrowBook(name);
             borrowed.add(B1.get(choice-1));
-            System.out.println("You have borrowed:" + (/*B.bookList.get(choice-1).getName()*/B1.get(choice-1).name) + "\nThank you for borrowing!");
+            System.out.println("You have borrowed:" + (/*B.bookList.get(choice-1).getName()*/B1.get(choice-1).getName()) + "\nThank you for borrowing!");
         }
         catch(InputMismatchException e) {
             System.out.println("Enter a number please!");
@@ -41,7 +41,7 @@ public class User {
             System.out.println("You have no books to return!");
             return;
         }
-        borrowed.forEach(i -> System.out.println(borrowed.indexOf(i)+1 + "."+ i.name));
+        borrowed.forEach(i -> System.out.println(borrowed.indexOf(i)+1 + "."+ i.getName()));
         System.out.println("----------\nEnter the number of the book you want to return");
         
         try {

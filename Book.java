@@ -1,6 +1,6 @@
 class Book {
-    String name,borby;
-    boolean av;
+    private String name,borby;
+    private boolean av;
     Book(String name) {
         this.name = name;
         av = true;
