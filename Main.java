@@ -8,9 +8,9 @@ public class Main {
     void login(){
         System.out.println("Enter your name:");
         name = Sc.next();
-        if(Users.stream().anyMatch(i -> i.name.equals(name))) {
+        if(Users.stream().anyMatch(i -> i.getName().equals(name))) {
             for( User U2: Users) {
-                if(U2.name.equals(name)) {
+                if(U2.getName().equals(name)) {
                     System.out.println("Welcome " + name);
                     homepage(U2);
                 }
@@ -28,9 +28,10 @@ public class Main {
         System.out.println("\nEnter the number for the action you wish to take;");
         System.out.println("1.Borrow Book\n2.Return Book\n3.Book List\n4.Logout");
         System.out.println("Books Borrowed:");
-        if(U.borrowed.isEmpty())  System.out.println("-");
-        else U.borrowed.forEach(i -> System.out.println("--" + i.name));
-        int choice = Sc.nextInt();
+        if(U.getBorrowed().isEmpty())  System.out.println("-");
+        else U.getBorrowed().forEach(i -> System.out.println("--" + i.getName()));
+        try {
+            int choice = Sc.nextInt();
         switch(choice) {
             case 1: U.borrowBook(B); break;
             case 2: U.returnBook(B); break;
@@ -38,7 +39,12 @@ public class Main {
             case 4: login(); break;
             default: System.out.println("Invalid Input");
         }
-        homepage(U);
+        }
+        catch(InputMismatchException e) {
+            System.out.println("Enter a valid number");
+            Sc.nextLine();
+        }
+        homepage(U); 
     }
 
     public static void main(String args[]) {

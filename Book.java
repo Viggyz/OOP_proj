@@ -8,9 +8,15 @@ class Book {
     String getName() {
         return name;
     }
+    String getBorby() {
+        return borby;
+    }
+    boolean getAv() {
+        return av;
+    }
     void borrowBook(String n){
         av = false;
-        borby = n;
+        borby = n; 
     }
     void returnBook() {
         av = true;
