@@ -8,13 +8,24 @@ public class BookList {
         bookList.add(new Book("Prisoner Of Azkaban"));
         bookList.add(new Book("The Godfather"));
     }
-    ArrayList<Book> getBooklist() {
-        return bookList;
+
+    void addBook(Book book) {
+        bookList.add(book);
     }
-    void displayBooks() {
+
+    void removeBook(Book book) {
+        bookList.remove(book);
+    }
+
+    Book getBook(int i) {
+        return bookList.get(i);
+    }
+
+    void displayBookList() {
         System.out.println("Book No.\tName\tavailability\tborrowed by");
         bookList.forEach(i -> System.out.println(bookList.indexOf(i)+1+ "." + i.getName() + "\t" + i.getAvailability() + "\t" + i.getBorrower()));
     }
+    
     ArrayList<Book> getAvailableBooks() {
         ArrayList<Book> B = new ArrayList<Book>();
         System.out.println("Book No.\tName");
