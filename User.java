@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class User {
-    private Scanner Sc = new Scanner(System.in);
     private String name;
     private ArrayList<Book> borrowed = new ArrayList<Book>();
     User(String name) {
@@ -14,12 +13,13 @@ public class User {
         return name;
     }
     void borrowBook(BookList B) {
-        ArrayList<Book> B1 = B.avaBooks();
+        ArrayList<Book> B1 = B.getAvailableBooks();
         if(B1.size()==0) {
             System.out.println("No available books");
             return;
         }
         System.out.println("----------\nEnter the number of the book you want to borrow");
+        Scanner Sc = new Scanner(System.in);
         try{
             int choice = Sc.nextInt();
             B1.get(choice-1).borrowBook(name);
@@ -43,7 +43,8 @@ public class User {
         }
         borrowed.forEach(i -> System.out.println(borrowed.indexOf(i)+1 + "."+ i.getName()));
         System.out.println("----------\nEnter the number of the book you want to return");
-        
+        Scanner Sc = new Scanner(System.in);
+
         try {
             int choice = Sc.nextInt();
             B.getBooklist().get(B.getBooklist().indexOf(borrowed.get(choice-1))).returnBook();

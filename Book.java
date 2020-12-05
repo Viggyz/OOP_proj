@@ -1,25 +1,26 @@
 class Book {
-    private String name,borby;
-    private boolean av;
+    private String name;
+    private String borrowed_by;
+    private boolean is_available;
     Book(String name) {
         this.name = name;
-        av = true;
+        is_available = true;
     }
     String getName() {
         return name;
     }
-    String getBorby() {
-        return borby;
+    String getBorrower() {
+        return borrowed_by;
     }
-    boolean getAv() {
-        return av;
+    boolean getAvailability() {
+        return is_available;
     }
     void borrowBook(String n){
-        av = false;
-        borby = n; 
+        is_available = false;
+        borrowed_by = n; 
     }
     void returnBook() {
-        av = true;
-        borby = "";
+        is_available = true;
+        borrowed_by = "";
     }
 }
