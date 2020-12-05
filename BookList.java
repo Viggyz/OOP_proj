@@ -9,13 +9,13 @@ public class BookList {
         bookList.add(new Book("The Godfather"));
     }
 
-    void addBook(Book book) {
-        bookList.add(book);
-    }
-
-    void removeBook(Book book) {
-        bookList.remove(book);
-    }
+    void returnBook(Book book) {
+        for(Book b : bookList) {
+            if(b.getName().equals(book.getName())) {
+                b.returnBook();
+            }
+        }
+    } 
 
     Book getBook(int i) {
         return bookList.get(i);
@@ -23,15 +23,15 @@ public class BookList {
 
     void displayBookList() {
         System.out.println("Book No.\tName\tavailability\tborrowed by");
-        bookList.forEach(i -> System.out.println(bookList.indexOf(i)+1+ "." + i.getName() + "\t" + i.getAvailability() + "\t" + i.getBorrower()));
+        bookList.forEach(i -> System.out.println(bookList.indexOf(i)+1+ "." + i.getName() + "\t" + i.isAvailable() + "\t" + i.getBorrower()));
     }
-    
+
     ArrayList<Book> getAvailableBooks() {
         ArrayList<Book> B = new ArrayList<Book>();
         System.out.println("Book No.\tName");
         int i=0;
         for(Book b: bookList) 
-            if(b.getAvailability()){
+            if(b.isAvailable()){
                 System.out.println(i+1 + "." + b.getName());
                 B.add(b);i++;
             }

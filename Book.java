@@ -12,7 +12,7 @@ class Book {
     String getBorrower() {
         return borrowed_by;
     }
-    boolean getAvailability() {
+    boolean isAvailable() {
         return is_available;
     }
     void borrowBook(String n){

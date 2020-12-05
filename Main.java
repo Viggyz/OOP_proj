@@ -35,7 +35,7 @@ public class Main {
         switch(choice) {
             case 1: U.borrowBook(B); break;
             case 2: U.returnBook(B); break;
-            case 3: B.displayBooks(); break; // Make this displayBookStatus
+            case 3: B.displayBookList(); break; // Make this displayBookStatus
             case 4: login(); break;
             default: System.out.println("Invalid Input");
         }

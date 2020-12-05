@@ -47,9 +47,9 @@ public class User {
 
         try {
             int choice = Sc.nextInt();
-            B.getBooklist().get(B.getBooklist().indexOf(borrowed.get(choice-1))).returnBook();
+            B.returnBook(borrowed.get(choice-1));
+            System.out.println("You have returned: " + (borrowed.get(choice-1).getName()) + "\nCome again!");
             borrowed.remove(choice-1);
-            System.out.println("You have returned: " + (B.getBooklist().get(choice-1).getName()) + "\nCome again!");
         }
         catch(InputMismatchException e) {
             System.out.println("Enter a number please!");
