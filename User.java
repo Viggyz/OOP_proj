@@ -63,3 +63,33 @@ public class User {
     }
     
 }
+
+class Guest extends User {
+    private static final int borrow_limit = 1;
+    Guest(String name) {
+        super(name);
+    }
+
+    void borrowBook(BookList B) {
+        if(getBorrowed().size() == borrow_limit) {
+            System.out.println("Sorry you cannot borrow more book as your limit is " + borrow_limit + "book(s)");
+            return;
+        }
+        super.borrowBook(B);
+    }
+}
+
+class Member extends User {
+    private static final int borrow_limit = 5;
+    Member(String name) {
+        super(name);
+    }
+
+    void borrowBook(BookList B) {
+        if(getBorrowed().size() == borrow_limit) {
+            System.out.println("Sorry you cannot borrow more book as your limit is " + borrow_limit + "book(s)");
+            return;
+        }
+        super.borrowBook(B);
+    }
+}
