@@ -12,7 +12,7 @@ public class User {
     String getName() {
         return name;
     }
-    void borrowBook(BookList B) {
+    void borrowBook(LibraryList B) {
         ArrayList<Book> B1 = B.getAvailableBooks();
         if(B1.size()==0) {
             System.out.println("No available books");
@@ -36,12 +36,14 @@ public class User {
             return; 
         } 
     }
-    void returnBook(BookList B) {
+    void returnBook(LibraryList B) {
         if (borrowed.size() == 0) {
             System.out.println("You have no books to return!");
             return;
         }
-        borrowed.forEach(i -> System.out.println(borrowed.indexOf(i)+1 + "."+ i.getName()));
+        for(Book i: borrowed) {
+            System.out.println(borrowed.indexOf(i)+1 + "."+ i.getName());
+        }
         System.out.println("----------\nEnter the number of the book you want to return");
         Scanner Sc = new Scanner(System.in);
 
@@ -70,7 +72,7 @@ class Guest extends User {
         super(name);
     }
 
-    void borrowBook(BookList B) {
+    void borrowBook(LibraryList B) {
         if(getBorrowed().size() == borrow_limit) {
             System.out.println("Sorry you cannot borrow more book as your limit is " + borrow_limit + "book(s)");
             return;
@@ -85,7 +87,7 @@ class Member extends User {
         super(name);
     }
 
-    void borrowBook(BookList B) {
+    void borrowBook(LibraryList B) {
         if(getBorrowed().size() == borrow_limit) {
             System.out.println("Sorry you cannot borrow more book as your limit is " + borrow_limit + "book(s)");
             return;
