@@ -24,7 +24,7 @@ public class User {
             int choice = Sc.nextInt();
             B1.get(choice-1).borrowBook(name);
             borrowed.add(B1.get(choice-1));
-            System.out.println("You have borrowed:" + (/*B.bookList.get(choice-1).getName()*/B1.get(choice-1).getName()) + "\nThank you for borrowing!");
+            System.out.println("You have borrowed:" + (B1.get(choice-1).getName()) + "\nThank you for borrowing!");
         }
         catch(InputMismatchException e) {
             System.out.println("Enter a number please!");
