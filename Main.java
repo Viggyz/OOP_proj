@@ -4,7 +4,6 @@ public class Main {
     Scanner Sc = new Scanner(System.in);
     String name;
     ArrayList<User> Users = new ArrayList<User>();
-    LibraryList B = new LibraryList();
     void login(){
         System.out.println("Enter your name:");
         name = Sc.next();
@@ -33,9 +32,9 @@ public class Main {
         try {
             int choice = Sc.nextInt();
         switch(choice) {
-            case 1: U.borrowBook(B); break;
-            case 2: U.returnBook(B); break;
-            case 3: B.displayBooks(); break; // Make this displayBookStatus
+            case 1: U.borrowBook(); break;
+            case 2: U.returnBook(); break;
+            case 3: LibraryList.displayBooks(); break; // Make this displayBookStatus
             case 4: login(); break;
             default: System.out.println("Invalid Input");
         }
@@ -49,6 +48,7 @@ public class Main {
 
     public static void main(String args[]) {
         Main M = new Main();
+        LibraryList.initialize();
         M.login();
     }
 }

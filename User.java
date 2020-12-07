@@ -12,8 +12,8 @@ public class User {
     String getName() {
         return name;
     }
-    void borrowBook(LibraryList B) {
-        ArrayList<Book> B1 = B.getAvailableBooks();
+    void borrowBook() {
+        ArrayList<Book> B1 = LibraryList.getAvailableBooks();
         if(B1.size()==0) {
             System.out.println("No available books");
             return;
@@ -36,7 +36,7 @@ public class User {
             return; 
         } 
     }
-    void returnBook(LibraryList B) {
+    void returnBook() {
         if (borrowed.size() == 0) {
             System.out.println("You have no books to return!");
             return;
@@ -49,7 +49,7 @@ public class User {
 
         try {
             int choice = Sc.nextInt();
-            B.returnBook(borrowed.get(choice-1));
+            LibraryList.returnBook(borrowed.get(choice-1));
             System.out.println("You have returned: " + (borrowed.get(choice-1).getName()) + "\nCome again!");
             borrowed.remove(choice-1);
         }
@@ -72,12 +72,12 @@ class Guest extends User {
         super(name);
     }
 
-    void borrowBook(LibraryList B) {
+    void borrowBook() {
         if(getBorrowed().size() == borrow_limit) {
             System.out.println("Sorry you cannot borrow more book as your limit is " + borrow_limit + "book(s)");
             return;
         }
-        super.borrowBook(B);
+        super.borrowBook();
     }
 }
 
@@ -87,11 +87,11 @@ class Member extends User {
         super(name);
     }
 
-    void borrowBook(LibraryList B) {
+    void borrowBook() {
         if(getBorrowed().size() == borrow_limit) {
             System.out.println("Sorry you cannot borrow more book as your limit is " + borrow_limit + "book(s)");
             return;
         }
-        super.borrowBook(B);
+        super.borrowBook();
     }
 }
