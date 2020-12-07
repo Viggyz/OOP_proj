@@ -1,7 +1,8 @@
 import java.util.*;
 
-public final class LibraryList {
+public class LibraryList {
     private static ArrayList<Book> Books = new ArrayList<Book>();
+    private LibraryList() {};
     static void initialize() {
         Books.add(new Book("A Tale of Two Cities"));
         Books.add(new Book("R.D. Sharma"));
