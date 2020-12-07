@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LibraryList {
+public final class LibraryList {
     private static ArrayList<Book> Books = new ArrayList<Book>();
     static void initialize() {
         Books.add(new Book("A Tale of Two Cities"));
@@ -21,9 +21,8 @@ public class LibraryList {
         return Books.get(i);
     }
 
-    static void displayBooks() {
-        System.out.println("Book No.\tName\tavailability\tborrowed by");
-        Books.forEach(i -> System.out.println(Books.indexOf(i)+1+ "." + i.getName() + "\t" + i.isAvailable() + "\t" + i.getBorrower()));
+    static ArrayList<Book> getBooks() {
+        return Books;
     }
 
     static ArrayList<Book> getAvailableBooks() {

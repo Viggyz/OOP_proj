@@ -24,7 +24,7 @@ public class User {
             int choice = Sc.nextInt();
             B1.get(choice-1).borrowBook(name);
             borrowed.add(B1.get(choice-1));
-            System.out.println("You have borrowed:" + (/*B.bookList.get(choice-1).getName()*/B1.get(choice-1).getName()) + "\nThank you for borrowing!");
+            System.out.println("You have borrowed:" + (B1.get(choice-1).getName()) + "\nThank you for borrowing!");
         }
         catch(InputMismatchException e) {
             System.out.println("Enter a number please!");
@@ -63,8 +63,14 @@ public class User {
             return;
         } 
     }
-    
+    void displayBooks() {
+        ArrayList<Book> Books = LibraryList.getBooks();
+        System.out.println("Book No.\tName\tavailability\tborrowed by");
+        Books.forEach(i -> System.out.println(Books.indexOf(i)+1+ "." + i.getName() + "\t" + i.isAvailable() + "\t" + i.getBorrower()));
+    }
 }
+
+
 
 class Guest extends User {
     private static final int borrow_limit = 1;
