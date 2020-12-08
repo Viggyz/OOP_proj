@@ -88,7 +88,7 @@ public class User {
             if(s == b.getName()){
                 int choice = borrowed.indexOf(b);
                 LibraryList.returnBook(borrowed.get(choice));
-                JOptionPane.showMessageDialog(f, "You have returned:" + (borrowed.get(choice).getName()) + "\nCome again!", "LibSys", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(f, "You have returned: " + (borrowed.get(choice).getName()) + "\nCome again!", "LibSys", JOptionPane.PLAIN_MESSAGE);
                 borrowed.remove(choice);  
                 break;
             }
@@ -119,7 +119,7 @@ public class User {
         ArrayList<Book> Books = LibraryList.getBooks();
         String s = ""; int i=1;
         for(Book b: Books) {
-            s += i++ + ". " + b.getName() + (b.isAvailable()?" --Available":b.getBorrower().equals("")?" --Unavailable":" --Borrowed by:" + b.getBorrower()) + "\n";
+            s += i++ + ". " + b.getName() + (b.isAvailable()?" --Available":b.getBorrower().equals("")?" --Unavailable":" --Borrowed by: " + b.getBorrower()) + "\n";
         }
         JOptionPane.showMessageDialog(f, 
             s,
@@ -127,37 +127,5 @@ public class User {
           JOptionPane.PLAIN_MESSAGE);
         //System.out.println("Book No.\tName\tavailability\tborrowed by");
         //Books.forEach(i -> System.out.println(Books.indexOf(i)+1+ "." + i.getName() + "\t" + i.isAvailable() + "\t" + i.getBorrower()));
-    }
-}
-
-
-
-class Guest extends User {
-    private static final int borrow_limit = 1;
-    Guest(String name) {
-        super(name);
-    }
-
-    void borrowBook() {
-        if(getBorrowed().size() == borrow_limit) {
-            System.out.println("Sorry you cannot borrow more book as your limit is " + borrow_limit + "book(s)");
-            return;
-        }
-        super.borrowBook();
-    }
-}
-
-class Member extends User {
-    private static final int borrow_limit = 5;
-    Member(String name) {
-        super(name);
-    }
-
-    void borrowBook() {
-        if(getBorrowed().size() == borrow_limit) {
-            System.out.println("Sorry you cannot borrow more book as your limit is " + borrow_limit + "book(s)");
-            return;
-        }
-        super.borrowBook();
     }
 }

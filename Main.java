@@ -8,10 +8,15 @@ public class Main {
     ArrayList<User> Users = new ArrayList<User>();
     void login(){
         //System.out.println("Enter your name:");
-        name = JOptionPane.showInputDialog(f, "Enter your name", "LibSys", JOptionPane.PLAIN_MESSAGE);
-        if (name == (null)) System.exit(1);
-        else if (name.equals("")) {
-            JOptionPane.showMessageDialog(f, "Enter a valid name", "LibSys", JOptionPane.ERROR_MESSAGE);
+        try {
+            name = JOptionPane.showInputDialog(f, "Enter your name", "LibSys", JOptionPane.PLAIN_MESSAGE).strip();
+        }
+        catch (NullPointerException e) {
+            System.exit(1);
+        }
+        
+        if (name.equals("") || name.length() < 3 || name.length() > 20) {
+            JOptionPane.showMessageDialog(f, "Enter a valid name that has 3-20 characters", "LibSys", JOptionPane.ERROR_MESSAGE);
             login();
         }
         for(User U: Users) {
