@@ -16,6 +16,21 @@ public class User {
     String getName() {
         return name;
     }
+    void showBorrowed() {
+        if(borrowed.isEmpty()) {
+            JOptionPane.showMessageDialog(f, "You haven't borrowed any books!", "LibSys", JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
+        int i = 1;
+        String s ="";
+        for(Book b: borrowed) {
+            s += i++ + ". " + b.getName() + "\n";
+        }
+        JOptionPane.showMessageDialog(f, 
+            s,
+         "LibSys",
+          JOptionPane.PLAIN_MESSAGE);
+    }
     void borrowBook() {
         ArrayList<Book> B1 = LibraryList.getAvailableBooks();
         String[] B = new String[B1.size()];
@@ -25,14 +40,17 @@ public class User {
         }
         if(B1.size()==0) {
             JOptionPane.showMessageDialog(f, "No available books", "LibSys", JOptionPane.INFORMATION_MESSAGE);
-            //System.out.println("No available books");
+            return;
+        }
+        else if(borrowed.size() == 3) {
+            JOptionPane.showMessageDialog(f, "You cannot borrow more than 3 books!", "LibSys", JOptionPane.WARNING_MESSAGE);
             return;
         }
         Object[] possibilities = B;
         String s = (String)JOptionPane.showInputDialog(
                     f,
                     "Select the book you want to borrow",
-                    "Customized Dialog",
+                    "LibSys",
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     possibilities,
@@ -46,27 +64,9 @@ public class User {
                 break;
             }
         }
-        //System.out.println("----------\nEnter the number of the book you want to borrow");
-        //Scanner Sc = new Scanner(System.in);
-        /*try{
-            int choice = Sc.nextInt();
-            B1.get(choice-1).borrowBook(name);
-            borrowed.add(B1.get(choice-1));
-            System.out.println("You have borrowed:" + (B1.get(choice-1).getName()) + "\nThank you for borrowing!");
-        }
-        catch(InputMismatchException e) {
-            System.out.println("Enter a number please!");
-            Sc.nextLine();
-            return;
-        }
-        catch(IndexOutOfBoundsException e) {
-            System.out.println("Invalid option");
-            return; 
-        } */
     }
     void returnBook() {
         if (borrowed.size() == 0) {
-            //System.out.println("You have no books to return!");
             JOptionPane.showMessageDialog(f, "You have no books to return!", "LibSys", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -79,7 +79,7 @@ public class User {
         String s = (String)JOptionPane.showInputDialog(
                     f,
                     "Select the book you want to return",
-                    "Customized Dialog",
+                    "LibSys",
                     JOptionPane.PLAIN_MESSAGE,
                     null,
                     possibilities,
@@ -93,39 +93,16 @@ public class User {
                 break;
             }
         }
-        /*for(Book i: borrowed) {
-            System.out.println(borrowed.indexOf(i)+1 + "."+ i.getName());
-        }
-        System.out.println("----------\nEnter the number of the book you want to return");
-        Scanner Sc = new Scanner(System.in);
-        
-        try {
-            int choice = Sc.nextInt();
-            LibraryList.returnBook(borrowed.get(choice-1));
-            System.out.println("You have returned: " + (borrowed.get(choice-1).getName()) + "\nCome again!");
-            borrowed.remove(choice-1);
-        }
-        catch(InputMismatchException e) {
-            System.out.println("Enter a number please!");
-            Sc.nextLine();
-            return;
-        }
-        catch(IndexOutOfBoundsException e) {
-            System.out.println("Invalid option");
-            return;
-        } */
     }
     void displayBooks() {
         ArrayList<Book> Books = LibraryList.getBooks();
         String s = ""; int i=1;
         for(Book b: Books) {
-            s += i++ + ". " + b.getName() + (b.isAvailable()?" --Available":b.getBorrower().equals("")?" --Unavailable":" --Borrowed by: " + b.getBorrower()) + "\n";
+            s += i++ + ". " + b.getName() + (b.isAvailable()?" ++Available":b.getBorrower().equals("")?" --Unavailable":" --Borrowed by: " + b.getBorrower()) + "\n";
         }
         JOptionPane.showMessageDialog(f, 
             s,
          "LibSys",
           JOptionPane.PLAIN_MESSAGE);
-        //System.out.println("Book No.\tName\tavailability\tborrowed by");
-        //Books.forEach(i -> System.out.println(Books.indexOf(i)+1+ "." + i.getName() + "\t" + i.isAvailable() + "\t" + i.getBorrower()));
     }
 }

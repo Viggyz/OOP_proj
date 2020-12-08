@@ -37,11 +37,9 @@ public class LibraryList {
 
     static ArrayList<Book> getAvailableBooks() {
         ArrayList<Book> B = new ArrayList<Book>();
-        //System.out.println("Book No.\tName");
         int i=0;
         for(Book b: Books) 
             if(b.isAvailable()){
-                //System.out.println(i+1 + "." + b.getName());
                 B.add(b);i++;
             }
         return B;   
