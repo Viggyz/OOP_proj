@@ -1,13 +1,22 @@
 import java.util.*;
+import java.io.FileNotFoundException;
+import java.io.File;
 
 public class LibraryList {
     private static ArrayList<Book> Books = new ArrayList<Book>();
     private LibraryList() {};
     static void initialize() {
-        Books.add(new Book("A Tale of Two Cities"));
-        Books.add(new Book("R.D. Sharma"));
-        Books.add(new Book("Prisoner Of Azkaban"));
-        Books.add(new Book("The Godfather"));
+        try{
+            File booklist_input_file = new File("booklist.txt");
+            Scanner inp = new Scanner(booklist_input_file);
+            while(inp.hasNextLine()) {
+                String s = inp.nextLine();
+                Books.add(new Book(s));
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     static void returnBook(Book book) {
