@@ -37,10 +37,9 @@ public class LibraryList {
 
     static ArrayList<Book> getAvailableBooks() {
         ArrayList<Book> B = new ArrayList<Book>();
-        int i=0;
         for(Book b: Books) 
             if(b.isAvailable()){
-                B.add(b);i++;
+                B.add(b);
             }
         return B;   
     } 
