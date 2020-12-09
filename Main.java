@@ -2,11 +2,10 @@ import java.util.*;
 import javax.swing.*;
 
 public class Main {
-    Scanner Sc = new Scanner(System.in);
-    String name;
-    JFrame f = new JFrame();
-    ArrayList<User> Users = new ArrayList<User>();
-    void login(){
+    static JFrame f = new JFrame();
+    static ArrayList<User> Users = new ArrayList<User>();
+    static void login(){
+        String name = "";
         try {
             name = JOptionPane.showInputDialog(f, "Enter your name", "LibSys", JOptionPane.PLAIN_MESSAGE).strip();
         }
@@ -28,7 +27,7 @@ public class Main {
             Users.add(U1);
             homepage(U1); 
     }
-    void homepage(User U){
+    static void homepage(User U){
         Object[] options = {"Borrow Book","Return Book","Book List","Show Borrowed", "Logout"};
         int choice = JOptionPane.showOptionDialog(f, "Choose one of the following options", "LibSys", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
         switch(choice+1) {
@@ -43,8 +42,7 @@ public class Main {
     }
 
     public static void main(String args[]) {
-        Main M = new Main();
         LibraryList.initialize();
-        M.login();
+        login();
     }
 }
